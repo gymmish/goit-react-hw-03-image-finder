@@ -1,12 +1,13 @@
 import ImageItem from '../ImageGallery/ImageGalleryItem';
+import { ImageGal } from './Image.styled';
 
 export default function ImageGallery({ response }) {
   return (
-    <ul>
+    <ImageGal>
       {response.map(({ id, webformatURL, tags }) => (
         <ImageItem key={id} id={id} url={webformatURL} tag={tags} />
       ))}
-    </ul>
+    </ImageGal>
   );
 }
 

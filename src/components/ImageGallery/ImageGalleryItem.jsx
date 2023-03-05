@@ -1,8 +1,10 @@
+import { ImageIt, ImageGalleryItem_image } from './Image.styled';
+
 const ImageItem = ({ url, tag }) => {
   return (
-    <li>
-      <img src={url} alt={tag} />
-    </li>
+    <ImageIt>
+      <ImageGalleryItem_image src={url} alt={tag} />
+    </ImageIt>
   );
 };
 

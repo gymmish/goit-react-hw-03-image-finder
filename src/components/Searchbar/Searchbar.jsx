@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import { Form, InputForm } from './Searchbar.styled';
-
+import { Form, InputForm, SearchBut } from './Searchbar.styled';
+import { FcSearch } from 'react-icons/fc';
+import { toast } from 'react-hot-toast';
 export class SearchBar extends Component {
   state = {
     value: '',
@@ -14,7 +15,7 @@ export class SearchBar extends Component {
     e.preventDefault();
 
     if (this.state.value.trim() === '') {
-      return alert('Please');
+      return toast.error("This didn't work");
     }
 
     this.props.onSearch(this.state.value);
@@ -33,9 +34,11 @@ export class SearchBar extends Component {
             placeholder="Search images and photos"
             onChange={this.handleChange}
           />
-          <button type="submit">
-            <span>Search</span>
-          </button>
+          <SearchBut type="submit">
+            <span>
+              <FcSearch></FcSearch>
+            </span>
+          </SearchBut>
         </Form>
       </header>
     );
