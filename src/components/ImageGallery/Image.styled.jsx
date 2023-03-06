@@ -22,7 +22,7 @@ export const ImageIt = styled.li`
   }
 `;
 
-export const ImageGalleryItem_image = styled.img`
+export const GalleryItemImage = styled.img`
   box-shadow: 0 8px 10px 2px rgb(0 0 0 / 25%);
   width: 100%;
   height: 260px;
