@@ -1,6 +1,8 @@
 import { React, Component } from 'react';
-import { Modalka, Overlay } from './Modal.styled';
 import { createPortal } from 'react-dom';
+
+import PropTypes from 'prop-types';
+import { Modalka, Overlay } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -13,15 +15,15 @@ export class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      console.log(event.code);
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      console.log(e.code);
       this.props.onClose();
     }
   };
 
-  handleClick = event => {
-    if (event.currentTarget === event.target) {
+  handleClick = e => {
+    if (e.currentTarget === e.target) {
       this.props.onClose();
     }
   };
