@@ -14,7 +14,7 @@ export class App extends Component {
     images: [],
     error: '',
     statud: 'idle',
-    modalImage: null,
+    modalImg: null,
     isOpen: false,
   };
 
@@ -55,37 +55,38 @@ export class App extends Component {
     }));
   };
 
-  modalImage = (id, img, tags) => {
-    this.setState({ modalImage: { id: id, img: img, tags: tags } });
+  modalImg = (id, img, tags) => {
+    this.setState({ modalImg: { id: id, img: img, tags: tags } });
     this.toggleModal();
   };
 
   toggleModal = () => {
-    const { isOpen } = this.state.isOpen;
+    const isOpen = this.props.isOpen;
     this.setState({ isOpen: !isOpen });
   };
 
   render() {
-    const images = this.state.images;
-    // if (this.state.status === 'resolved') {
-    //   return <ImageGallery response={images} />;
-    // }
+    const { images, modalImg, status, isOpen } = this.state;
 
     return (
       <>
         <Toaster position="top-center" reverseOrder={false} />
         <SearchBar onSearch={this.handleSubmit} />
-        {this.state.status === 'pending' && <Loader />}
+        {status === 'pending' && <Loader />}
         <ImageGallery
           response={images}
-          onImageClick={this.modalImage}
+          onImageClick={this.modalImg}
           toggleModal={this.toggleModal}
         />
-        {this.state.status === 'resolved' && (
+        {status === 'resolved' && (
           <ButtonMore loadMoreClick={this.hendleMore}></ButtonMore>
         )}
-        {this.state.isOpen && <Modal onClose={this.toggleModal} />}
+        {isOpen && <Modal modalImg={modalImg} onClose={this.toggleModal} />}
       </>
     );
   }
 }
+
+// if (this.state.status === 'resolved') {
+//   return <ImageGallery response={images} />;
+// }

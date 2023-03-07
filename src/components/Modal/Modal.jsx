@@ -13,21 +13,29 @@ export class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown = e => {
-    if (e.code === 'Escape') {
+  handleKeyDown = event => {
+    if (event.code === 'Escape') {
+      console.log(event.code);
       this.props.onClose();
     }
   };
 
-  handleClick = e => {
-    if (e.currentTarget === e.target) {
+  handleClick = event => {
+    if (event.currentTarget === event.target) {
       this.props.onClose();
     }
   };
+
   render() {
     return createPortal(
       <Overlay onClick={this.handleClick}>
-        <Modalka>{this.props.children}</Modalka>
+        <Modalka>
+          <img
+            src={this.props.modalImg.img}
+            alt={this.props.modalImg.tags}
+            key={this.props.modalImg.id}
+          />
+        </Modalka>
       </Overlay>,
       modalRoot
     );
