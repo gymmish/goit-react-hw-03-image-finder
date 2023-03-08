@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import getImages from './Api/Api';
-import { Toaster } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import Loader from './LoadMore/Loader';
 import { SearchBar } from './Searchbar/Searchbar';
 import { Modal } from './Modal/Modal';
@@ -26,7 +26,12 @@ export class App extends Component {
       getImages(textSearch, page)
         .then(data => data.hits)
         .then(response => {
-          this.setState({ images: response, status: 'resolved' });
+          if (response.length === 0) {
+            toast.error("Sorry, we didn't find anything");
+            this.setState({ status: 'idel' });
+          } else {
+            this.setState({ images: response, status: 'resolved' });
+          }
         })
         .catch(error => console.log(error));
     }
