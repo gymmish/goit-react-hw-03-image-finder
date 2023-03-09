@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 // import PropTypes from 'prop-types';
 import { Modalka, Overlay } from './Modal.styled';
 
-// const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#modal-root');
 
 export class Modal extends Component {
   componentDidMount() {
@@ -29,7 +29,7 @@ export class Modal extends Component {
   };
 
   render() {
-    return (
+    return createPortal(
       <Overlay onClick={this.handleClick}>
         <Modalka>
           <img
@@ -38,8 +38,8 @@ export class Modal extends Component {
             key={this.props.modalImg.id}
           />
         </Modalka>
-      </Overlay>
-      // modalRoot
+      </Overlay>,
+      modalRoot
     );
   }
 }
