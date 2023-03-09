@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import { Component } from 'react';
 import { createPortal } from 'react-dom';
 
 // import PropTypes from 'prop-types';
@@ -18,7 +18,6 @@ export class Modal extends Component {
   handleKeyDown = e => {
     if (e.code === 'Escape') {
       this.props.onClose();
-      console.log(e.code);
     }
   };
 

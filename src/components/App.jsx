@@ -62,12 +62,12 @@ export class App extends Component {
 
   modalImg = (id, img, tags) => {
     this.setState({ modalImg: { id: id, img: img, tags: tags } });
-    this.toggleModal();
   };
 
   toggleModal = () => {
-    const isOpen = this.props.isOpen;
-    this.setState({ isOpen: !isOpen });
+    this.setState(({ isOpen }) => ({
+      isOpen: !isOpen,
+    }));
   };
 
   render() {

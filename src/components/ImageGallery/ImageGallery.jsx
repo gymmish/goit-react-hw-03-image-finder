@@ -10,7 +10,7 @@ function ImageGallery({ response, onImageClick, toggleModal }) {
           id={id}
           url={webformatURL}
           tag={tags}
-          // toggleModal={() => toggleModal()}
+          toggleModal={() => toggleModal()}
           onImageClick={() => onImageClick(id, largeImageURL, tags)}
         />
       ))}
