@@ -83,7 +83,7 @@ export class App extends Component {
           onImageClick={this.modalImg}
           toggleModal={this.toggleModal}
         />
-        {status === 'resolved' && (
+        {images.length >= 12 && (
           <ButtonMore loadMoreClick={this.hendleMore}></ButtonMore>
         )}
         {isOpen && <Modal modalImg={modalImg} onClose={this.toggleModal} />}

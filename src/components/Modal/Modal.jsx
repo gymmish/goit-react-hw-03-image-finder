@@ -1,10 +1,10 @@
 import { React, Component } from 'react';
 import { createPortal } from 'react-dom';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Modalka, Overlay } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
+// const modalRoot = document.querySelector('#modal-root');
 
 export class Modal extends Component {
   componentDidMount() {
@@ -17,8 +17,8 @@ export class Modal extends Component {
 
   handleKeyDown = e => {
     if (e.code === 'Escape') {
-      console.log(e.code);
       this.props.onClose();
+      console.log(e.code);
     }
   };
 
@@ -29,7 +29,7 @@ export class Modal extends Component {
   };
 
   render() {
-    return createPortal(
+    return (
       <Overlay onClick={this.handleClick}>
         <Modalka>
           <img
@@ -38,8 +38,8 @@ export class Modal extends Component {
             key={this.props.modalImg.id}
           />
         </Modalka>
-      </Overlay>,
-      modalRoot
+      </Overlay>
+      // modalRoot
     );
   }
 }
